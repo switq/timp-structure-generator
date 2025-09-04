@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIMP Structure Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/xml-js@1.6.11/dist/xml-js.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>TIMP Structure Generator</h1>
+      <p>Bem-vindo ao gerador de estruturas TIMP.</p>
+    </header>
+    <main>
+      <textarea
+        id="xmlInput"
+        rows="10"
+        style="width: 100%"
+        placeholder="Cole o XML aqui"
+      ></textarea>
+      <button id="processXmlBtn">Processar XML</button>
+      <pre id="output"></pre>
+    </main>
+    <footer>&copy; 2024 TIMP Structure Generator</footer>
+    <script src="script.js"></script>
+    <script src="structureMap.js"></script>
+  </body>
+</html>

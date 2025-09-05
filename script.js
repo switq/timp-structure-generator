@@ -158,16 +158,17 @@ document.getElementById('processXmlBtn').addEventListener('click', () => {
     const fields = translateFields(mapFields(jsonCompact));
     const lastID = fields.length;
     const inputParameters = translateFields(mapIPs(jsonCompact));
-    const levels = gerateLevels(lastID)
+    const levels = gerateLevels(lastID);
+    const hanaName = jsonCompact["View:ColumnView"]["_attributes"].name
 
     const completeStructure = {
-      hanaName: "",
+      hanaName,
       version: 1,
       hanaPackage: "",
-      title: "",
-      description: "",
-      descriptionPT: "",
-      descriptionEN: "",
+      title: hanaName,
+      description: hanaName,
+      descriptionPT: hanaName,
+      descriptionEN: hanaName,
       lastID,
       inputParameters,
       levels,

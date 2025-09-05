@@ -1,3 +1,5 @@
+let mappedFields = {};
+
 function showOutput(mappedFields) {
   const output = document.getElementById('output');
   output.textContent = JSON.stringify(mappedFields, null, 2);
@@ -19,17 +21,29 @@ function showOutput(mappedFields) {
 }
 
 function mapFields(jsonCompact) {
-  const typeConverter = (inlineType) => {
+  const typeConverter = (inlineType, hanaName = "") => {
     const typeMap = {
       NVARCHAR: "NVARCHAR",
       DECIMAL: "DECIMAL",
       TINYINT: "INTEGER"
     }
     const type = typeMap[inlineType.primitiveType];
+
+
     const dimension = type == "INTEGER" ? 0 : inlineType.length;
     const precision = inlineType.scale;
     const isMeasure = type == "DECIMAL";
-    const isKey = false;
+    const isKey = hanaName === "ID";
+
+    if (dimension === 8 && type === "NVARCHAR" && mappedFields[hanaName] === "TIMESTAMP") {
+      return {
+        type: "TIMESTAMP",
+        precision: 0,
+        isKey: false,
+        isMeasure: false
+      }
+    }
+
     return {
       type,
       dimension,
@@ -45,10 +59,11 @@ function mapFields(jsonCompact) {
 
   return rawFields.map((field, index) => {
     const inlineType = field.inlineType["_attributes"];
-    const type = typeConverter(inlineType)
+    const hanaName = field["_attributes"].name;
+    const type = typeConverter(inlineType, hanaName)
     return {
       ID: index + 1,
-      hanaName: field["_attributes"].name,
+      hanaName,
       active: true,
       ...type,
       label: "",
@@ -63,11 +78,18 @@ function mapIPs(jsonCompact) {
   return rawInputParameters.map((param, index) => {
     const inputParam = param["_attributes"];
     const inlineType = param["inlineType"]["_attributes"];
+    const hanaName = inputParam.name;
+
+    let type = inlineType.primitiveType;
+
+    if (mappedFields[hanaName]?.type === "TIMESTAMP")
+      type = "TIMESTAMP";
+
     return {
       ID: index + 1,
-      hanaName: inputParam.name,
+      hanaName,
       isMandatory: inputParam.mandatory,
-      Type: inlineType.primitiveType,
+      Type: type,
       operator: "=",
       label: "",
       labelPT: "",
@@ -93,7 +115,6 @@ function gerateLevels(maxID) {
     levels: []
   }
 }
-let mappedFields = {};
 
 async function loadMappedFields() {
   const response = await fetch('files/fields_mapped.json');
@@ -102,9 +123,6 @@ async function loadMappedFields() {
   }
   mappedFields = await response.json();
 }
-
-// Carrega mappedFields ao iniciar
-loadMappedFields();
 
 function translateFields(fields) {
   return fields.map(field => {
@@ -118,6 +136,9 @@ function translateFields(fields) {
     }
   })
 }
+
+
+loadMappedFields();
 
 document.getElementById('processXmlBtn').addEventListener('click', () => {
   const xml = document.getElementById('xmlInput').value;
@@ -155,6 +176,7 @@ document.getElementById('processXmlBtn').addEventListener('click', () => {
     showOutput(completeStructure);
 
   } catch (error) {
+    throw error
     document.getElementById('output').textContent = 'Erro ao processar o XML: ' + error.message;
     document.getElementById('copyBtn')?.remove();
   }

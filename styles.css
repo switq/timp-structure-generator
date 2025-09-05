@@ -25,10 +25,81 @@ footer {
 pre {
   height: 200px;
   overflow: auto;
+  border-radius: 4px;
+  border: #222 1px solid;
+  padding: 1em;
 }
 
 .field {
   display: flex;
   flex-direction: column;
   margin-bottom: 4px;
+}
+
+input[type="text"],
+textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 1em;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  background: #f6f6f6;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #2c3e50;
+  outline: none;
+  background: #fff;
+}
+
+button {
+  background: #2c3e50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.8em;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(44, 62, 80, 0.08);
+}
+
+button:hover,
+button:focus {
+  background: #34495e;
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.12);
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 2px;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.alert {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 16px 0;
+}
+
+.step-img {
+  max-width: 350px;
+  display: block;
+  margin: 8px 0;
 }

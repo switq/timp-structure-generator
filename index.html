@@ -27,12 +27,50 @@
         <textarea
           id="xmlInput"
           rows="10"
-          style="width: 100%"
+          class="full-width"
           placeholder="Cole o XML aqui"
         ></textarea>
       </div>
+
       <button id="processXmlBtn">Processar XML</button>
       <pre id="output"></pre>
+
+      <div class="alert">
+        <strong>Atenção:</strong> A estrutura gerada deve ser revisada antes de
+        ser utilizada.
+      </div>
+
+      <div class="field mt-16">
+        <h3>Como copiar o XML do HANA</h3>
+        <ol>
+          <li>
+            Acesse a <strong>view</strong> desejada no HANA Studio ou Web IDE.
+          </li>
+          <li>
+            Clique no botão <strong>Display XML</strong> para visualizar o XML
+            da view.<br />
+            <img
+              src="assets/fullscreen.jpg"
+              alt="Display XML"
+              class="step-img"
+            />
+            <img src="assets/xml-zoom.jpg" alt="Zoom XML" class="step-img" />
+          </li>
+          <li>
+            Um modal será aberto mostrando o XML.<br />
+            <img
+              src="assets/xml-copy.jpg"
+              alt="Modal de copiar XML"
+              class="step-img"
+            /><br />
+          </li>
+          <li>Copie todo o conteúdo do XML exibido no modal.</li>
+          <li>
+            Cole o XML no campo acima (<strong>Cole o XML aqui</strong>) do TIMP
+            Structure Generator.
+          </li>
+        </ol>
+      </div>
     </main>
     <footer>
       &copy; 2025 TIMP Structure Generator | Desenvolvido por

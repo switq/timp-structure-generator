@@ -55,7 +55,7 @@ function mapFields(jsonCompact) {
 
   const nodes = jsonCompact["View:ColumnView"]["viewNode"];
   const nodeName = document.getElementById('nodeName').value || "Projection";
-  const mainProjection = nodes.find((node) => node._attributes.name == nodeName);
+  const mainProjection = nodes.find((node) => node._attributes.name.toLowerCase() == nodeName.toLowerCase());
   if (!mainProjection) throw new Error("Nó não encontrado");
   const rawFields = mainProjection.element;
 

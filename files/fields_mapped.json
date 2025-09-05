@@ -97669,5 +97669,19 @@
     "label": "Perc. redução BC PIS total",
     "labelPT": "Perc. redução BC PIS total",
     "labelEN": "PIS total CB perc. reduction"
+  },
+  "MOV_MENSAL": {
+    "hanaName": "MOV_MENSAL",
+    "type": "DECIMAL",
+    "labelPT": "Movimento Mensal",
+    "labelEN": "Monthly Movement",
+    "label": "Movimento Mensal"
+  },
+  "IND_MOV_MENS": {
+    "hanaName": "IND_MOV_MENS",
+    "type": "DECIMAL",
+    "labelPT": "Indicador Movimento Mensal",
+    "labelEN": "indicator of Monthly Movement",
+    "label": "Indicador Movimento Mensal"
   }
 }

@@ -106,7 +106,7 @@ function gerateLevels(maxID) {
     fields.push({ ID: i });
   }
 
-  return {
+  return [{
     name: "Dados",
     description: "Dados",
     namePT: "Dados",
@@ -115,7 +115,7 @@ function gerateLevels(maxID) {
     descriptionEN: "Data",
     fields,
     levels: []
-  }
+  }]
 }
 
 async function loadMappedFields() {

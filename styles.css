@@ -26,3 +26,9 @@ pre {
   height: 200px;
   overflow: auto;
 }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+}

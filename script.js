@@ -54,7 +54,9 @@ function mapFields(jsonCompact) {
   }
 
   const nodes = jsonCompact["View:ColumnView"]["viewNode"];
-  const mainProjection = nodes.find((node) => node._attributes.name == "Projection");
+  const nodeName = document.getElementById('nodeName').value || "Projection";
+  const mainProjection = nodes.find((node) => node._attributes.name == nodeName);
+  if (!mainProjection) throw new Error("Nó não encontrado");
   const rawFields = mainProjection.element;
 
   return rawFields.map((field, index) => {
@@ -176,7 +178,6 @@ document.getElementById('processXmlBtn').addEventListener('click', () => {
     showOutput(completeStructure);
 
   } catch (error) {
-    throw error
     document.getElementById('output').textContent = 'Erro ao processar o XML: ' + error.message;
     document.getElementById('copyBtn')?.remove();
   }

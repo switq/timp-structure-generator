@@ -13,18 +13,30 @@
       <p>Bem-vindo ao gerador de estruturas TIMP.</p>
     </header>
     <main>
-      <textarea
-        id="xmlInput"
-        rows="10"
-        style="width: 100%"
-        placeholder="Cole o XML aqui"
-      ></textarea>
+      <div class="field">
+        <label for="nodeName">Nome do nó:</label>
+        <input
+          type="text"
+          id="nodeName"
+          placeholder="Digite o nome do nó"
+          value="Projection"
+        />
+      </div>
+      <div class="field">
+        <label for="nodeName">XML:</label>
+        <textarea
+          id="xmlInput"
+          rows="10"
+          style="width: 100%"
+          placeholder="Cole o XML aqui"
+        ></textarea>
+      </div>
       <button id="processXmlBtn">Processar XML</button>
       <pre id="output"></pre>
     </main>
     <footer>
-      &copy; 2025 TIMP Structure Generator |
-      Desenvolvido por <a href="https://github.com/switq" target="_blank">Guilherme Rodrigues</a>
+      &copy; 2025 TIMP Structure Generator | Desenvolvido por
+      <a href="https://github.com/switq" target="_blank">Guilherme Rodrigues</a>
     </footer>
     <script src="script.js"></script>
     <script src="structureMap.js"></script>

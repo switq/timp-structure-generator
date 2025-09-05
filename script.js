@@ -76,7 +76,8 @@ function mapFields(jsonCompact) {
 }
 
 function mapIPs(jsonCompact) {
-  const rawInputParameters = jsonCompact["View:ColumnView"].parameter
+  const rawInputParameters = jsonCompact["View:ColumnView"].parameter;
+  if(!rawInputParameters) return [];
   return rawInputParameters.map((param, index) => {
     const inputParam = param["_attributes"];
     const inlineType = param["inlineType"]["_attributes"];
@@ -179,6 +180,7 @@ document.getElementById('processXmlBtn').addEventListener('click', () => {
     showOutput(completeStructure);
 
   } catch (error) {
+    throw error
     document.getElementById('output').textContent = 'Erro ao processar o XML: ' + error.message;
     document.getElementById('copyBtn')?.remove();
   }

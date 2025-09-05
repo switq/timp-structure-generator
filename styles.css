@@ -46,6 +46,7 @@ textarea {
   margin-bottom: 12px;
   background: #f6f6f6;
   transition: border-color 0.2s;
+  resize: none;
 }
 
 input[type="text"]:focus,
@@ -93,6 +94,15 @@ label {
   background: #fff3cd;
   color: #856404;
   border: 1px solid #ffeeba;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 16px 0;
+}
+
+.alert-info {
+  background: #e3f2fd;
+  color: #4e74a0;
+  border: 1px solid #90caf9;
   border-radius: 4px;
   padding: 12px;
   margin: 16px 0;
